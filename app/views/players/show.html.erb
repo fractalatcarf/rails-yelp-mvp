@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @player.name %>
+</p>
+<ul>
+  <% @player.cards.each do |card| %>
+  <li> <%= link_to detach_player_path(@player, card) do %>
+    <img src="<%= card.url %>" style="width:100px"
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>
+<div class="row">
+  <% @available_cards.each do |card| %>
+  <div class="col-sm-1">
+    <%= link_to attach_player_path(@player, card) do %>
+    <img src="<%= card.url %>" style="width:100px"
+    <% end %>
+  </div>
+  <% end %>
+</div>
